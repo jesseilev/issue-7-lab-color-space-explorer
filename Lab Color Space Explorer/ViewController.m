@@ -96,11 +96,11 @@
     float r; float g; float b;
     [self.labColor.color getRed:&r green:&g blue:&b alpha:nil];
     self.redLabel.text = [NSString stringWithFormat:@"%.2f", r];
-    self.redLabel.textColor = (r > 0 && r < 1) ? [UIColor blackColor] : [UIColor redColor];
+    self.redLabel.textColor = (r > 0 && r < 1) ? [UIColor grayColor] : [UIColor redColor];
     self.greenLabel.text = [NSString stringWithFormat:@"%0.2f", g];
-    self.greenLabel.textColor = (g > 0 && g < 1) ? [UIColor blackColor] : [UIColor redColor];
+    self.greenLabel.textColor = (g > 0 && g < 1) ? [UIColor grayColor] : [UIColor redColor];
     self.blueLabel.text = [NSString stringWithFormat:@"%0.2f", b];
-    self.blueLabel.textColor = (b > 0 && b < 1) ? [UIColor blackColor] : [UIColor redColor];
+    self.blueLabel.textColor = (b > 0 && b < 1) ? [UIColor grayColor] : [UIColor redColor];
 }
 
 @end
