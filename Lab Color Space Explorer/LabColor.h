@@ -30,4 +30,6 @@
 
 @property (nonatomic, strong, readonly) UIColor *color;
 
+- (NSString *)rgbDescription;
+
 @end
