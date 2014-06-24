@@ -32,22 +32,6 @@ static double D65TristimulusValues[3] = {95.047, 100.0, 108.883};
     return self;
 }
 
-- (NSString *)description
-{
-    return [NSString stringWithFormat:@"<%@: %p> {%g, %g, %g}", [self class], self, self.lComponent, self.aComponent, self.bComponent];
-}
-
-
-- (NSString *)rgbDescription
-{
-    return [NSString stringWithFormat:@"%g, %g, %g", self.redComponent, self.greenComponent, self.blueComponent];
-}
-
-+ (NSSet *)keyPathsForValuesAffectingXComponent
-{
-    return [NSSet setWithObjects:@"aComponent", @"yComponent", nil];
-}
-
 - (double)xComponent
 {
     double x = (self.aComponent / 500) + self.yComponent;
@@ -170,6 +154,22 @@ static double D65TristimulusValues[3] = {95.047, 100.0, 108.883};
 - (UIColor *)color
 {
     return [UIColor colorWithRed:self.redComponent /* * 0.01 */ green:self.greenComponent /* * 0.01 */ blue:self.blueComponent /* * 0.01 */ alpha:1.];
+}
+
+
+- (NSString *)description
+{
+    return [NSString stringWithFormat:@"<%@: %p> {%g, %g, %g}", [self class], self, self.lComponent, self.aComponent, self.bComponent];
+}
+
+- (NSString *)rgbDescription
+{
+    return [NSString stringWithFormat:@"%g, %g, %g", self.redComponent, self.greenComponent, self.blueComponent];
+}
+
++ (NSSet *)keyPathsForValuesAffectingXComponent
+{
+    return [NSSet setWithObjects:@"aComponent", @"yComponent", nil];
 }
 
 @end
