@@ -21,6 +21,11 @@
 /// The @b b component in LAB color space
 @property (nonatomic) double bComponent;
 
+
+@property (nonatomic, readonly) double xComponent;
+@property (nonatomic, readonly) double yComponent;
+@property (nonatomic, readonly) double zComponent;
+
 /// The @b red component in sRGB color space
 @property (nonatomic, readonly) double redComponent;
 /// The @b green component in sRGB color space

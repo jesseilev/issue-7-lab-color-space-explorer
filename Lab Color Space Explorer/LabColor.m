@@ -10,10 +10,6 @@
 
 @interface LabColor ()
 
-@property (nonatomic, readonly) double xComponent;
-@property (nonatomic, readonly) double yComponent;
-@property (nonatomic, readonly) double zComponent;
-
 @end
 
 static double inverseF(double const t);
