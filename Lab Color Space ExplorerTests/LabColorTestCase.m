@@ -13,6 +13,7 @@
 
 @property (nonatomic) LabColor *lColor;
 @property (nonatomic) NSDictionary *colorDict1;
+@property (nonatomic) NSDictionary *colorDict2;
 
 @end
 
@@ -30,6 +31,14 @@
                     
                     @"red":@(0.99826), @"green":@(0.67160), @"blue":@(0.11850)
                         };
+    
+    self.colorDict2 = @{
+                        @"l":@(60),  @"a":@(-55),  @"b":@(40),
+                        
+                        @"x":@(15.362), @"y":@(28.123), @"z":@(10.119),
+                        
+                        @"red":@(0.12871), @"green":@(0.65219), @"blue":@(0.26745)
+                        };
 }
 
 - (void)tearDown {
@@ -40,32 +49,28 @@
     [super tearDown];
 }
 
-- (void)testXYZValues1
+- (void)testLabColorValues
 {
-    self.lColor.lComponent = [self.colorDict1[@"l"] floatValue];
-    self.lColor.aComponent = [self.colorDict1[@"a"] floatValue];
-    self.lColor.bComponent = [self.colorDict1[@"b"] floatValue];
+    NSDictionary *colorDict = self.colorDict1;
+    
+    self.lColor.lComponent = [colorDict[@"l"] floatValue];
+    self.lColor.aComponent = [colorDict[@"a"] floatValue];
+    self.lColor.bComponent = [colorDict[@"b"] floatValue];
+    
     float accuracy = 3.0; // 3% of range [0.0 thru 100.0]
-    CGFloat xExpected = [self.colorDict1[@"x"] floatValue];
+    CGFloat xExpected = [colorDict[@"x"] floatValue];
     XCTAssertEqualWithAccuracy(self.lColor.xComponent, xExpected, accuracy, @"Incorrect X");
-    CGFloat yExpected = [self.colorDict1[@"y"] floatValue];
+    CGFloat yExpected = [colorDict[@"y"] floatValue];
     XCTAssertEqualWithAccuracy(self.lColor.yComponent, yExpected, accuracy, @"Incorrect Y");
-    CGFloat zExpected = [self.colorDict1[@"z"] floatValue];
+    CGFloat zExpected = [colorDict[@"z"] floatValue];
     XCTAssertEqualWithAccuracy(self.lColor.zComponent, zExpected, accuracy, @"Incorrect Z");
-}
-
-- (void)testRGBValues1
-{
-    NSLog(@"%s doing work...", __PRETTY_FUNCTION__);
-    self.lColor.lComponent = [self.colorDict1[@"l"] floatValue];
-    self.lColor.aComponent = [self.colorDict1[@"a"] floatValue];
-    self.lColor.bComponent = [self.colorDict1[@"b"] floatValue];
-    float accuracy = 0.06; //6% of range [0.0 thru 1.0]
-    CGFloat rExpected = [self.colorDict1[@"red"] floatValue];
+    
+    accuracy = 0.06; //6% of range [0.0 thru 1.0]
+    CGFloat rExpected = [colorDict[@"red"] floatValue];
     XCTAssertEqualWithAccuracy(self.lColor.redComponent, rExpected, accuracy, @"Incorrect Red");
-    CGFloat gExpected = [self.colorDict1[@"green"] floatValue];
+    CGFloat gExpected = [colorDict[@"green"] floatValue];
     XCTAssertEqualWithAccuracy(self.lColor.greenComponent, gExpected, accuracy, @"Incorrect Green");
-    CGFloat bExpected = [self.colorDict1[@"blue"] floatValue];
+    CGFloat bExpected = [colorDict[@"blue"] floatValue];
     XCTAssertEqualWithAccuracy(self.lColor.blueComponent, bExpected, accuracy, @"Incorrect Blue");
 }
 
